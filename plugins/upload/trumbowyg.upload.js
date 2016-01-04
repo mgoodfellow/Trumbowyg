@@ -32,7 +32,7 @@
     $.extend(true, $.trumbowyg, {
         langs: {
             en: {
-                upload: 'Upload',
+                upload: 'Upload Image',
                 file: 'File',
                 uploadError: 'Error'
             },
@@ -81,14 +81,11 @@
                                 file: {
                                     type: 'file',
                                     required: true
-                                },
-                                alt: {
-                                    label: 'description'
                                 }
                             },
 
                             // Callback
-                            function (values) {
+                            function () {
                                 var data = new FormData();
                                 data.append($.trumbowyg.upload.fileFieldName, file);
 
@@ -130,7 +127,7 @@
                                         if (!!getDeep(data, $.trumbowyg.upload.statusPropertyName.split('.'))) {
                                             var url = getDeep(data, $.trumbowyg.upload.urlPropertyName.split('.'));
                                             tbw.execCmd('insertImage', url);
-                                            $('img[src="' + url + '"]:not([alt])', tbw.$box).attr('alt', values.alt);
+                                            $('img[src="' + url + '"]:not([alt])', tbw.$box);
                                             setTimeout(function () {
                                                 tbw.closeModal();
                                             }, 250);

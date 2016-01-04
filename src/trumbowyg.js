@@ -21,7 +21,7 @@ jQuery.trumbowyg = {
             unorderedList: "Unordered list",
             orderedList: "Ordered list",
 
-            insertImage: "Insert Image",
+            insertImage: "Embed Image",
             insertVideo: "Insert Video",
             link: "Link",
             createLink: "Insert link",
@@ -937,14 +937,10 @@ jQuery.trumbowyg = {
                 url: {
                     label: 'URL',
                     required: true
-                },
-                alt: {
-                    label: t.lang.description,
-                    value: t.getSelectedText()
                 }
             }, function (v) { // v are values
                 t.execCmd('insertImage', v.url);
-                $('img[src="' + v.url + '"]:not([alt])', t.$box).attr('alt', v.alt);
+                $('img[src="' + v.url + '"]:not([alt])', t.$box);
                 return true;
             });
         },
